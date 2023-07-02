@@ -31,7 +31,7 @@ body {
 }
 
 #search_input {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: normal;
     background-color: #f4f2f2;
     border: solid black 1px;
@@ -76,6 +76,13 @@ body {
     height: 16px;
     width: 16px;
     fill: #b4b4b4;
+    transition: 150ms;
+}
+
+#search_icon:hover {
+    height: 16px;
+    width: 16px;
+    fill: #000;
 }
 
 #content {
