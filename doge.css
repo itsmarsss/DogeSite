@@ -122,12 +122,13 @@ body {
 .image {
     border-radius: 30px;
     width: 100%;
+    cursor: pointer;
 }
 
 #load_more {
     display: flex;
     margin: auto;
-    background-color: #fafbfc;
+    background: #fafbfc;
     border: 1px solid #1b1f2326;
     color: #24292E;
     border-radius: 5px;
@@ -140,11 +141,25 @@ body {
 }
 
 #load_more:hover {
-    background-color: #f3f4f6;
+    background: #f3f4f6;
+}
+
+#load_more:disabled {
+    background: #fafbfc;
+    color: #959da5;
+    cursor: not-allowed;
+}
+
+#load_more:disabled:hover {
+    background: #fafbfc;
+}
+
+#load_more:active:hover {
+    background: #fafbfc;
 }
 
 #load_more:active {
-    background-color: #edeff2;
+    background: #edeff2;
     box-shadow: #e1e4e833 0 1px 0 inset;
 }
 
