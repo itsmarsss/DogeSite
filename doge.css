@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 5px;
+    background-color: #eeeeee;
+    transition: 100ms;
+}
+
+#topbar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    font-family: "Poppins";
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.search_input {
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+    background-color: #f4f2f2;
+    border: solid black 1px;
+    color: #646464;
+    padding: 11.2px 16px;
+    border-radius: 30px;
+    width: 50vw;
+    transition: 200ms;
+    margin-right: -32px;
+}
+
+.search_input:hover,
+.search_input:focus {
+    box-shadow: 0 0 8px #00000020;
+}
+
+.search_input:focus {
+    outline: none;
+    background-color: #f0eeee;
+}
+
+.search_input::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+.search_input:focus+.search_button {
+    background-color: #f0eeee;
+}
+
+.search_button {
+    border: none;
+    background-color: #f4f2f2;
+    margin-top: 1.6px;
+    padding-right: 1.6px;
+}
+
+.search_button:hover {
+    cursor: pointer;
+}
+
+.search_icon {
+    height: 16px;
+    width: 16px;
+    fill: #b4b4b4;
+    transform: translateX(-5px) translateY(3px);
+}
