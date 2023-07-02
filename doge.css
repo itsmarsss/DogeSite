@@ -202,7 +202,6 @@ button:focus {
     width: 100%;
     border: 1px dashed #000;
     border-radius: 20px;
-    display: block;
 }
 
 #info {

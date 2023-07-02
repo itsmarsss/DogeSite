@@ -72,7 +72,6 @@ function loadMore() {
 
     latestIndex = latestIndex + loadAmount - 1;
 
-
     prevWidth = 0;
 }
 
@@ -96,10 +95,15 @@ function display(index) {
     }
 
     if (tags.innerHTML == "") {
-        tags.innerHTML = "No Tags."
+        tags.innerHTML = "No Tags~!"
     }
 
     date.innerHTML = new Date(image.date).toLocaleDateString("en-US");
+
+    const url = new URL(window.location.href);
+
+    url.searchParams.set("dogepic", index);
+    window.history.pushState("", "", url);
 }
 
 loadMore();
