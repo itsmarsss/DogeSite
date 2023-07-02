@@ -1,9 +1,11 @@
-function DogeImage(src, width, height, description, tags) {
+function DogeImage(src, width, height, title, description, tags, date) {
     this.src = src;
     this.width = width;
     this.height = height;
+    this.title = title;
     this.description = description;
     this.tags = tags;
+    this.date = date;
 }
 
 const images = [
@@ -34,6 +36,15 @@ document.getElementById("search_input").addEventListener("keypress", function (e
     }
 });
 
+const popup = document.getElementById("popup");
+
+const big_image = document.getElementById("big_image");
+const title = document.getElementById("title");
+const description = document.getElementById("description");
+const tags = document.getElementById("tags");
+const date = document.getElementById("date");
+const share = document.getElementById("share_doge");
+
 function filter() {
     console.log("Filter");
 }
@@ -51,7 +62,7 @@ function loadMore() {
         const img = new Image();
         img.src = images[i];
         img.onload = () => {
-            adjustedImages.push(new DogeImage(img.src, img.width, img.height));
+            adjustedImages.push(new DogeImage(img.src, img.width, img.height, "Title", "Description", ["Tags", "Tags", "Tags"], 1688338082164));
 
             if (images.length == adjustedImages.length) {
                 document.getElementById("load_more").disabled = true;
@@ -66,20 +77,45 @@ function loadMore() {
 }
 
 function display(index) {
-    console.log(index);
+    popup.style.display = "flex";
+
+    const image = adjustedImages[index];
+
+    big_image.src = image.src;
+
+    big_image.style.height = image.height * (big_image.offsetWidth / image.width) + "px";
+
+    title.innerHTML = image.title;
+    description.innerHTML = image.description;
+
+    tags.innerHTML = "";
+    for (var i = 0; i < image.tags.length; i++) {
+        tags.innerHTML += `
+        <tag>${image.tags[i]}</tag>
+        `;
+    }
+
+    if (tags.innerHTML == "") {
+        tags.innerHTML = "No Tags."
+    }
+
+    date.innerHTML = new Date(image.date).toLocaleDateString("en-US");
 }
 
 loadMore();
 
 var prevWidth = 0;
 setInterval(function () {
-    const width = window.innerWidth;
+    const width = window.innerWidth - 60;
 
     if (width == prevWidth) {
         return;
     }
-
     prevWidth = width;
+
+    try {
+        big_image.style.height = image.height * (big_image.offsetWidth / image.width) + "px";
+    } catch (e) { }
 
     const area = width - 60;
     const columns = Math.max(Math.floor(area / photoWidth), 1);

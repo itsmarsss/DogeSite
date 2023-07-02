@@ -194,10 +194,15 @@ button:focus {
 
 }
 
-#big_image {
+#popup_image {
     width: 50%;
+}
+
+#big_image {
+    width: 100%;
     border: 1px dashed #000;
     border-radius: 20px;
+    display: block;
 }
 
 #info {
