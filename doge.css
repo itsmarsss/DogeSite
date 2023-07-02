@@ -75,3 +75,10 @@ body {
     fill: #b4b4b4;
     transform: translateX(-5px) translateY(3px);
 }
+
+#content {
+    margin: 15px;
+    width: calc(100% - 30px);
+    border-radius: 30px;
+    box-shadow: #959da533 0px 8px 24px;
+}
