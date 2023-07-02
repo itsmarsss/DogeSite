@@ -78,32 +78,37 @@ function loadMore() {
 function display(index) {
     popup.style.display = "flex";
 
-    const image = adjustedImages[index];
+    const img = new Image();
+    img.src = images[index];
+    img.onload = () => {
+        const image = new DogeImage(img.src, img.width, img.height, "Title", "Description", ["Tags", "Tags", "Tags"], 1688338082164);
 
-    big_image.src = image.src;
+        big_image.src = image.src;
 
-    big_image.style.height = image.height * (big_image.offsetWidth / image.width) + "px";
+        big_image.style.height = image.height * (big_image.offsetWidth / image.width) + "px";
 
-    title.innerHTML = image.title;
-    description.innerHTML = image.description;
+        title.innerHTML = image.title;
+        description.innerHTML = image.description;
 
-    tags.innerHTML = "";
-    for (var i = 0; i < image.tags.length; i++) {
-        tags.innerHTML += `
+        tags.innerHTML = "";
+        for (var i = 0; i < image.tags.length; i++) {
+            tags.innerHTML += `
         <tag>${image.tags[i]}</tag>
         `;
-    }
+        }
 
-    if (tags.innerHTML == "") {
-        tags.innerHTML = "No Tags~!"
-    }
+        if (tags.innerHTML == "") {
+            tags.innerHTML = "No Tags~!"
+        }
 
-    date.innerHTML = new Date(image.date).toLocaleDateString("en-US");
+        date.innerHTML = new Date(image.date).toLocaleDateString("en-US");
 
-    const url = new URL(window.location.href);
+        const url = new URL(window.location.href);
 
-    url.searchParams.set("dogepic", index);
-    window.history.pushState("", "", url);
+        url.searchParams.set("dogepic", index);
+        window.history.pushState("", "", url);
+    };
+
 }
 
 loadMore();
