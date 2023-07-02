@@ -13,6 +13,48 @@ body {
     transition: 100ms;
 }
 
+button {
+    display: flex;
+    margin: auto;
+    background: #fafbfc;
+    border: 1px solid #1b1f2326;
+    color: #24292E;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 6px 16px;
+    box-shadow: #1b1f230a 0 1px 0, #ffffff40 0 1px 0 inset;
+    font-family: "Poppins";
+    cursor: pointer;
+    transition: 200ms;
+}
+
+button:hover {
+    background: #f3f4f6;
+}
+
+button:disabled {
+    background: #fafbfc;
+    color: #959da5;
+    cursor: not-allowed;
+}
+
+button:disabled:hover {
+    background: #fafbfc;
+}
+
+button:active:hover {
+    background: #fafbfc;
+}
+
+button:active {
+    background: #edeff2;
+    box-shadow: #e1e4e833 0 1px 0 inset;
+}
+
+button:focus {
+    outline: 1px transparent;
+}
+
 #topbar {
     width: 100%;
     display: flex;
@@ -125,48 +167,6 @@ body {
     cursor: pointer;
 }
 
-#load_more {
-    display: flex;
-    margin: auto;
-    background: #fafbfc;
-    border: 1px solid #1b1f2326;
-    color: #24292E;
-    border-radius: 5px;
-    font-size: 14px;
-    padding: 6px 16px;
-    box-shadow: #1b1f230a 0 1px 0, #ffffff40 0 1px 0 inset;
-    font-family: "Poppins";
-    cursor: pointer;
-    transition: 200ms;
-}
-
-#load_more:hover {
-    background: #f3f4f6;
-}
-
-#load_more:disabled {
-    background: #fafbfc;
-    color: #959da5;
-    cursor: not-allowed;
-}
-
-#load_more:disabled:hover {
-    background: #fafbfc;
-}
-
-#load_more:active:hover {
-    background: #fafbfc;
-}
-
-#load_more:active {
-    background: #edeff2;
-    box-shadow: #e1e4e833 0 1px 0 inset;
-}
-
-#load_more:focus {
-    outline: 1px transparent;
-}
-
 #popup {
     width: 100vw;
     height: 100vh;
@@ -198,6 +198,10 @@ body {
     border-radius: 20px;
 }
 
+#info {
+    width: 50%;
+}
+
 #title {
     text-decoration: underline;
 }
@@ -224,6 +228,11 @@ tag:hover {
 
 #date {
     color: #999;
+}
+
+#share_doge {
+    position: absolute;
+    bottom: 50px;
 }
 
 body::-webkit-scrollbar {
