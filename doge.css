@@ -106,7 +106,8 @@ button:focus {
 
 #search_button {
     border: none;
-    background: #f4f2f2;
+    box-shadow: none;
+    background: transparent;
     margin-top: 1.6px;
     padding-right: 1.6px;
 }
@@ -116,15 +117,14 @@ button:focus {
 }
 
 #search_icon {
-    height: 16px;
-    width: 16px;
+    height: 18px;
+    width: 18px;
     fill: #b4b4b4;
+    transform: translateX(-15px) translateY(5px);
     transition: 150ms;
 }
 
 #search_icon:hover {
-    height: 16px;
-    width: 16px;
     fill: #000;
 }
 
@@ -178,6 +178,7 @@ button:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 #popup_content {
