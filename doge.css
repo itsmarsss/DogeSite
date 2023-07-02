@@ -154,11 +154,12 @@ button:focus {
     border-radius: 30px;
     box-shadow: #0000001a 0px 4px 12px;
     object-fit: cover;
+    transition: 200ms;
 }
 
 .card:hover {
     box-shadow: none;
-    transition: 200ms;
+    filter: brightness(0.75);
 }
 
 .image {

@@ -65,10 +65,13 @@ function loadMore() {
     prevWidth = 0;
 }
 
-var prevWidth = 0;
+function display(index) {
+    console.log(index);
+}
 
 loadMore();
 
+var prevWidth = 0;
 setInterval(function () {
     const width = window.innerWidth;
 
@@ -98,7 +101,7 @@ setInterval(function () {
         const adjustedHeight = image.height * (photoWidth / image.width);
 
         container.innerHTML += `
-        <div class="card" style="height: ${adjustedHeight}px;">
+        <div class="card" style="height: ${adjustedHeight}px;" onclick="display(${i})">
             <img class="image" draggable="false" src="${image.src}" style="height: ${adjustedHeight}px;">
         </div>
     `;
