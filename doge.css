@@ -125,7 +125,8 @@ body {
 }
 
 #load_more {
-    appearance: none;
+    display: flex;
+    margin: auto;
     background-color: #fafbfc;
     border: 1px solid #1b1f2326;
     color: #24292E;

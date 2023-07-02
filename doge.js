@@ -18,7 +18,19 @@ function filter() {
     console.log("Filter");
 }
 
+const photoWidth = getComputedStyle(document.documentElement).getPropertyValue("--imgWidth").replace("px", "");
+const loadAmount = 12;
+var latestIndex = 0;
+
 var images = [
+    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
+    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
+    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
+    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
+    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
+    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
+    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
+    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
     "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
     "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
     "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
@@ -30,18 +42,27 @@ var images = [
     "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
 ];
 
-var allImages = [];
-for (var i = 0; i < images.length; i++) {
-    const img = new Image();
-    img.src = images[i];
-    img.onload = () => {
-        allImages.push(new DogeImage(img.src, img.width, img.height));
-    };
+var adjustedImages = [];
+
+function loadMore() {
+    const adjustedLoadAmount = Math.min(loadAmount, images.length - adjustedImages.length);
+
+    for (var i = latestIndex; i < latestIndex + adjustedLoadAmount; i++) {
+        const img = new Image();
+        img.src = images[i];
+        img.onload = () => {
+            adjustedImages.push(new DogeImage(img.src, img.width, img.height));
+        };
+    }
+
+    latestIndex = latestIndex + loadAmount - 1;
+
+    prevWidth = 0;
 }
 
-const photoWidth = getComputedStyle(document.documentElement).getPropertyValue("--imgWidth").replace("px", "");
-
 var prevWidth = 0;
+
+loadMore();
 
 setInterval(function () {
     const width = window.innerWidth;
@@ -64,12 +85,10 @@ setInterval(function () {
     `;
     }
 
-
-
-    for (var i = 0; i < images.length; i++) {
+    for (var i = 0; i < adjustedImages.length; i++) {
         const container = document.getElementById(`column-${i % columns}`);
 
-        var image = allImages[i];
+        var image = adjustedImages[i];
 
         const adjustedHeight = image.height * (photoWidth / image.width);
 
