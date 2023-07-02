@@ -8,6 +8,7 @@ body {
     margin: 0;
     padding: 0;
     padding-top: 5px;
+    padding-bottom: 20px;
     background-color: #eee;
     transition: 100ms;
 }
@@ -121,4 +122,31 @@ body {
 .image {
     border-radius: 30px;
     width: 100%;
+}
+
+#load_more {
+    appearance: none;
+    background-color: #fafbfc;
+    border: 1px solid #1b1f2326;
+    color: #24292E;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 6px 16px;
+    box-shadow: #1b1f230a 0 1px 0, #ffffff40 0 1px 0 inset;
+    font-family: "Poppins";
+    cursor: pointer;
+    transition: 200ms;
+}
+
+#load_more:hover {
+    background-color: #f3f4f6;
+}
+
+#load_more:active {
+    background-color: #edeff2;
+    box-shadow: #e1e4e833 0 1px 0 inset;
+}
+
+#load_more:focus {
+    outline: 1px transparent;
 }
