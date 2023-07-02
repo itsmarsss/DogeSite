@@ -1,3 +1,11 @@
+function DogeImage(src, width, height, description, tags) {
+    this.src = src;
+    this.width = width;
+    this.height = height;
+    this.description = description;
+    this.tags = tags;
+}
+
 const content = document.getElementById("content");
 
 var images = [
