@@ -13,7 +13,8 @@ body {
     transition: 100ms;
 }
 
-button {
+button,
+.button {
     display: flex;
     margin: auto;
     background: #fafbfc;
@@ -28,30 +29,36 @@ button {
     transition: 200ms;
 }
 
-button:hover {
+button:hover,
+.button:hover {
     background: #f3f4f6;
 }
 
-button:disabled {
+button:disabled,
+.button:disabled {
     background: #fafbfc;
     color: #959da5;
     cursor: not-allowed;
 }
 
-button:disabled:hover {
+button:disabled:hover,
+.button:disabled:hover {
     background: #fafbfc;
 }
 
-button:active:hover {
+button:active:hover,
+.button:active:hover {
     background: #fafbfc;
 }
 
-button:active {
+button:active,
+.button:active {
     background: #edeff2;
     box-shadow: #e1e4e833 0 1px 0 inset;
 }
 
-button:focus {
+button:focus,
+.button:focus {
     outline: 1px transparent;
 }
 

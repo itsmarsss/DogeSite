@@ -75,6 +75,8 @@ function loadMore() {
     prevWidth = 0;
 }
 
+var tempImage;
+
 function display(index) {
     popup.style.display = "flex";
 
@@ -82,6 +84,8 @@ function display(index) {
     img.src = images[index];
     img.onload = () => {
         const image = new DogeImage(img.src, img.width, img.height, "Title", "Description", ["Tags", "Tags", "Tags"], 1688338082164);
+
+        tempImage = image;
 
         big_image.src = image.src;
 
@@ -106,8 +110,13 @@ function display(index) {
         const url = new URL(document.location);
 
         url.searchParams.set("dogepic", index);
-        window.history.pushState("", "", url);
+        window.history.pushState("", url, url);
     };
+}
+
+function copy() {
+    navigator.clipboard.writeText(document.location);
+    share.value = "Copied URL!"
 }
 
 loadMore();
@@ -116,6 +125,8 @@ const params = new URLSearchParams(document.location.search);
 
 if (params.size > 0) {
     display(params.get("dogepic"));
+} else {
+    popup.style.display = "none";
 }
 
 var prevWidth = 0;
@@ -128,8 +139,8 @@ setInterval(function () {
     prevWidth = width;
 
     try {
-        big_image.style.height = image.height * (big_image.offsetWidth / image.width) + "px";
-    } catch (e) { }
+        big_image.style.height = tempImage.height * (big_image.offsetWidth / tempImage.width) + "px";
+    } catch (e) { console.error(e) }
 
     const area = width - 60;
     const columns = Math.max(Math.floor(area / photoWidth), 1);
