@@ -188,6 +188,42 @@ body {
     min-width: 375px;
     background: #eee;
     border-radius: 20px;
+    gap: 20px;
+
+}
+
+#big_image {
+    width: 50%;
+    border: 1px dashed #000;
+    border-radius: 20px;
+}
+
+#title {
+    text-decoration: underline;
+}
+
+#tags {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 5px;
+}
+
+tag {
+    background: #ddf4ff;
+    color: #0969df;
+    border-radius: 15px;
+    padding: 5px;
+    font-size: 11px;
+    transition: 200ms;
+}
+
+tag:hover {
+    background: #0969da;
+    color: #fff;
+}
+
+#date {
+    color: #999;
 }
 
 body::-webkit-scrollbar {
