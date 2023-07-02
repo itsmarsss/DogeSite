@@ -103,15 +103,20 @@ function display(index) {
 
         date.innerHTML = new Date(image.date).toLocaleDateString("en-US");
 
-        const url = new URL(window.location.href);
+        const url = new URL(document.location);
 
         url.searchParams.set("dogepic", index);
         window.history.pushState("", "", url);
     };
-
 }
 
 loadMore();
+
+const params = new URLSearchParams(document.location.search);
+
+if (params.size > 0) {
+    display(params.get("dogepic"));
+}
 
 var prevWidth = 0;
 setInterval(function () {
