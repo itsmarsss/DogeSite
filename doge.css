@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+:root {
+    --imgWidth: 250px;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -27,7 +31,6 @@ body {
 }
 
 .search_input {
-
     font-family: 'Poppins', sans-serif;
     font-weight: normal;
     background-color: #f4f2f2;
@@ -89,24 +92,24 @@ body {
 }
 
 .img_column {
-    width: 200px;
+    width: var(--imgWidth);
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
 .card {
-    width: 190px;
+    width: calc(var(--imgWidth) - 10);
+    height: 200px;
     padding: 5px;
     border-radius: 30px;
     box-shadow: #0000001a 0px 4px 12px;
-    transition: 200ms;
     object-fit: cover;
 }
 
 .card:hover {
-    width: 100%;
     box-shadow: none;
+    transition: 200ms;
 }
 
 .image {

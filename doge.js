@@ -6,34 +6,47 @@ var images = [
     "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
     "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
     "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
+    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
+    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
+    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
+    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
 ];
 
 
-const photoWidth = 200;
+const photoWidth = getComputedStyle(document.documentElement).getPropertyValue("--imgWidth").replace("px", "");
 
-var width = screen.width;
+var prevWidth = 0;
 
-var area = width - 60;
+setInterval(() => {
+    const width = window.innerWidth;
 
-var columns = Math.floor(area / photoWidth);
+    if (width == prevWidth) {
+        return;
+    }
 
-content.innerHTML = "";
-for (var i = 0; i < columns; i++) {
-    content.innerHTML += `
+    prevWidth = width;
+
+    const area = width - 60;
+    const columns = Math.max(Math.floor(area / photoWidth), 1);
+
+    content.innerHTML = "";
+    for (var i = 0; i < columns; i++) {
+        content.innerHTML += `
         <div class="img_column" id="column-${i}">
 
         </div>
     `;
-}
+    }
 
 
 
-for (var i = 0; i < images.length; i++) {
-    const container = document.getElementById(`column-${i % columns}`);
+    for (var i = 0; i < images.length; i++) {
+        const container = document.getElementById(`column-${i % columns}`);
 
-    container.innerHTML += `
+        container.innerHTML += `
         <div class="card">
             <img class="image" src="${images[i]}">
         </div>
     `;
-}
+    }
+}, 200);
