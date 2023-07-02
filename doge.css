@@ -81,4 +81,25 @@ body {
     width: calc(100% - 30px);
     border-radius: 30px;
     box-shadow: #959da533 0px 8px 24px;
+    display: grid;
+    grid-gap: 10px;
+    grid-auto-flow: column;
 }
+
+.img_column {
+    width: 100px;
+}
+
+.card {
+    border-radius: 30px;
+    box-shadow: #0000001a 0px 4px 12px;
+    transition: 200ms;
+    object-fit: cover;
+}
+
+.card:hover {
+    width: 100%;
+    box-shadow: none;
+}
+
+.image {}
