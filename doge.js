@@ -8,6 +8,16 @@ function DogeImage(src, width, height, description, tags) {
 
 const content = document.getElementById("content");
 
+document.getElementById("search_input").addEventListener("keypress", function (e) {
+    if (e.key === 'Enter') {
+        filter();
+    }
+});
+
+function filter() {
+    console.log("Filter");
+}
+
 var images = [
     "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
     "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
@@ -20,12 +30,20 @@ var images = [
     "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
 ];
 
+var allImages = [];
+for (var i = 0; i < images.length; i++) {
+    const img = new Image();
+    img.src = images[i];
+    img.onload = () => {
+        allImages.push(new DogeImage(img.src, img.width, img.height));
+    };
+}
 
 const photoWidth = getComputedStyle(document.documentElement).getPropertyValue("--imgWidth").replace("px", "");
 
 var prevWidth = 0;
 
-setInterval(() => {
+setInterval(function () {
     const width = window.innerWidth;
 
     if (width == prevWidth) {
@@ -51,10 +69,14 @@ setInterval(() => {
     for (var i = 0; i < images.length; i++) {
         const container = document.getElementById(`column-${i % columns}`);
 
+        var image = allImages[i];
+
+        const adjustedHeight = image.height * (photoWidth / image.width);
+
         container.innerHTML += `
-        <div class="card">
-            <img class="image" src="${images[i]}">
+        <div class="card" style="height: ${adjustedHeight}px;">
+            <img class="image" src="${image.src}" style="height: ${adjustedHeight}px;">
         </div>
     `;
     }
-}, 200);
+}, 100);

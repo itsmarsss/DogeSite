@@ -8,7 +8,7 @@ body {
     margin: 0;
     padding: 0;
     padding-top: 5px;
-    background-color: #eeeeee;
+    background-color: #eee;
     transition: 100ms;
 }
 
@@ -76,7 +76,6 @@ body {
     height: 16px;
     width: 16px;
     fill: #b4b4b4;
-    transform: translateX(-5px) translateY(3px);
 }
 
 #content {
@@ -115,5 +114,4 @@ body {
 .image {
     border-radius: 30px;
     width: 100%;
-    height: 100%;
 }
