@@ -86,8 +86,8 @@ function display(index) {
         tags.innerHTML = "";
         for (var i = 0; i < image.tags.length; i++) {
             tags.innerHTML += `
-        < tag > ${image.tags[i]}</tag >
-        `;
+                <tag>${image.tags[i]}</tag>
+            `;
         }
 
         if (tags.innerHTML == "") {
@@ -142,9 +142,9 @@ setInterval(function () {
     content.innerHTML = "";
     for (var i = 0; i < columns; i++) {
         content.innerHTML += `
-    < div class= "img_column" id = "column-${i}" >
+            <div class= "img_column" id = "column-${i}" >
 
-        </div >
+            </div>
         `;
     }
 
@@ -156,9 +156,9 @@ setInterval(function () {
         const adjustedHeight = image.height * (photoWidth / image.width);
 
         container.innerHTML += `
-    < div class="card" style = "height: ${adjustedHeight}px;" onclick = "display(${i})" >
-        <img class="image" draggable="false" src="${image.src}" style="height: ${adjustedHeight}px;">
-        </div>
-`;
+            <div class="card" style = "height: ${adjustedHeight}px;" onclick = "display(${i})">
+                <img class="image" draggable="false" src="${image.src}" style="height: ${adjustedHeight}px;">
+            </div>
+        `;
     }
 }, 100);
