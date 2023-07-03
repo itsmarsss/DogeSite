@@ -278,6 +278,10 @@ button:focus,
     top: 0px;
 }
 
+#muted_info {
+    display: flex;
+}
+
 #title {
     text-decoration: underline;
 }
@@ -316,11 +320,6 @@ tag:hover {
 
 #date {
     color: #999;
-}
-
-#share_doge {
-    position: absolute;
-    bottom: 50px;
 }
 
 #exit_popup {
