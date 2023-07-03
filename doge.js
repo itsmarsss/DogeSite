@@ -142,14 +142,13 @@ setInterval(function () {
     content.innerHTML = "";
     for (var i = 0; i < columns; i++) {
         content.innerHTML += `
-            <div class= "img_column" id = "column-${i}" >
-
+            <div class= "img_column" id = "column-${i}">
             </div>
         `;
     }
 
     for (var i = 0; i < adjustedImages.length; i++) {
-        const container = document.getElementById(`column - ${i % columns} `);
+        const container = document.getElementById(`column-${i % columns}`);
 
         var image = adjustedImages[i];
 
