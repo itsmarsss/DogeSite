@@ -104,7 +104,11 @@ function display(index) {
 
 function copy() {
     navigator.clipboard.writeText(document.location);
-    share.value = "Copied URL!"
+    share.value = "Copied URL~!"
+
+    setTimeout(function () {
+        share.value = "Share Doge~!"
+    }, 2000);
 }
 
 document.getElementById("exit_popup").addEventListener("click", function () {
