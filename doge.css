@@ -219,6 +219,8 @@ button:focus,
 
 #info {
     width: 50%;
+    position: sticky;
+    top: 0px;
 }
 
 #title {
@@ -258,6 +260,7 @@ tag:hover {
 
 #exit_popup {
     margin-top: 0;
+    margin-left: 10px;
     font-size: 20px;
     text-align: center;
     height: 30px;
@@ -270,9 +273,25 @@ tag:hover {
     transform: scale(1.25);
 }
 
-body::-webkit-scrollbar,
-#main::-webkit-scrollbar {
+body::-webkit-scrollbar {
     width: 0px;
+}
+
+#main::-webkit-scrollbar {
+    width: 5px;
+}
+
+#main::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#main::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+#main::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .loader {
