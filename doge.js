@@ -129,7 +129,8 @@ if (params.size > 0) {
 }
 
 var prevWidth = 0;
-setInterval(function () {
+
+async function displayUpdate() {
     const width = window.innerWidth - 60;
 
     if (width == prevWidth) {
@@ -165,4 +166,8 @@ setInterval(function () {
             </div>
         `;
     }
+}
+
+setInterval(function () {
+    displayUpdate();
 }, 100);
