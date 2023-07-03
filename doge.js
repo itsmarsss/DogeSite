@@ -111,6 +111,8 @@ function copy() {
     }, 2000);
 }
 
+loadMore();
+
 document.getElementById("exit_popup").addEventListener("click", function () {
     const url = location.protocol + "//" + location.host + location.pathname;
 
