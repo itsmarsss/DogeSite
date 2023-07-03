@@ -119,6 +119,13 @@ function copy() {
     share.value = "Copied URL!"
 }
 
+document.getElementById("exit_popup").addEventListener("click", function () {
+    const url = location.protocol + "//" + location.host + location.pathname;
+
+    window.history.pushState("", url, url)
+    popup.style.display = "none";
+});
+
 loadMore();
 
 const params = new URLSearchParams(document.location.search);

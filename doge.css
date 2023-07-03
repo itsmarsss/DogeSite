@@ -232,6 +232,8 @@ tag {
     padding: 5px;
     font-size: 11px;
     transition: 200ms;
+    user-select: none;
+    cursor: pointer;
 }
 
 tag:hover {
@@ -246,6 +248,20 @@ tag:hover {
 #share_doge {
     position: absolute;
     bottom: 50px;
+}
+
+#exit_popup {
+    margin-top: 0;
+    font-size: 20px;
+    text-align: center;
+    height: 30px;
+    cursor: pointer;
+    user-select: none;
+    transition: 100ms;
+}
+
+#exit_popup:hover {
+    transform: scale(1.25);
 }
 
 body::-webkit-scrollbar {
