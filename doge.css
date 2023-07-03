@@ -10,11 +10,15 @@ body {
     padding-top: 5px;
     padding-bottom: 20px;
     background: #eee;
+    -webkit-transition: 100ms;
+    -o-transition: 100ms;
     transition: 100ms;
 }
 
 button,
 .button {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     margin: auto;
     background: #fafbfc;
@@ -23,9 +27,12 @@ button,
     border-radius: 5px;
     font-size: 14px;
     padding: 6px 16px;
+    -webkit-box-shadow: #1b1f230a 0 1px 0, #ffffff40 0 1px 0 inset;
     box-shadow: #1b1f230a 0 1px 0, #ffffff40 0 1px 0 inset;
     font-family: "Poppins";
     cursor: pointer;
+    -webkit-transition: 200ms;
+    -o-transition: 200ms;
     transition: 200ms;
 }
 
@@ -54,6 +61,7 @@ button:active:hover,
 button:active,
 .button:active {
     background: #edeff2;
+    -webkit-box-shadow: #e1e4e833 0 1px 0 inset;
     box-shadow: #e1e4e833 0 1px 0 inset;
 }
 
@@ -64,9 +72,18 @@ button:focus,
 
 #topbar {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -75,7 +92,11 @@ button:focus,
 }
 
 #search {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     text-align: center;
 }
@@ -89,12 +110,15 @@ button:focus,
     padding: 11px 16px;
     border-radius: 30px;
     width: 50vw;
+    -webkit-transition: 200ms;
+    -o-transition: 200ms;
     transition: 200ms;
     margin-right: -32px;
 }
 
 #search_input:hover,
 #search_input:focus {
+    -webkit-box-shadow: 0 0 8px #00000020;
     box-shadow: 0 0 8px #00000020;
 }
 
@@ -113,6 +137,7 @@ button:focus,
 
 #search_button {
     border: none;
+    -webkit-box-shadow: none;
     box-shadow: none;
     background: transparent;
     margin-top: 1.6px;
@@ -127,7 +152,11 @@ button:focus,
     height: 18px;
     width: 18px;
     fill: #b4b4b4;
+    -webkit-transform: translateX(-15px) translateY(5px);
+    -ms-transform: translateX(-15px) translateY(5px);
     transform: translateX(-15px) translateY(5px);
+    -webkit-transition: 150ms;
+    -o-transition: 150ms;
     transition: 150ms;
 }
 
@@ -140,7 +169,9 @@ button:focus,
     padding: 15px;
     width: calc(100% - 60px);
     border-radius: 30px;
+    -webkit-box-shadow: #959da533 0px 8px 24px;
     box-shadow: #959da533 0px 8px 24px;
+    display: -ms-grid;
     display: grid;
     grid-gap: 15px;
     grid-auto-flow: column;
@@ -149,7 +180,12 @@ button:focus,
 
 .img_column {
     width: var(--imgWidth);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     gap: 20px;
 }
@@ -159,13 +195,19 @@ button:focus,
     height: 200px;
     padding: 5px;
     border-radius: 30px;
+    -webkit-box-shadow: #0000001a 0px 4px 12px;
     box-shadow: #0000001a 0px 4px 12px;
+    -o-object-fit: cover;
     object-fit: cover;
+    -webkit-transition: 200ms;
+    -o-transition: 200ms;
     transition: 200ms;
 }
 
 .card:hover {
+    -webkit-box-shadow: none;
     box-shadow: none;
+    -webkit-filter: brightness(0.75);
     filter: brightness(0.75);
 }
 
@@ -184,14 +226,23 @@ button:focus,
     top: 0;
     left: 0;
     font-family: "Poppins";
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     display: none;
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
 }
 
 #popup_content {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     padding: 20px;
     width: calc(90% - 40px);
@@ -203,6 +254,8 @@ button:focus,
 }
 
 #main {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     overflow: auto;
     gap: 20px;
@@ -230,7 +283,12 @@ button:focus,
 }
 
 #tags {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
     flex-flow: row wrap;
     gap: 5px;
 }
@@ -241,7 +299,12 @@ tag {
     border-radius: 15px;
     padding: 5px;
     font-size: 11px;
+    -webkit-transition: 200ms;
+    -o-transition: 200ms;
     transition: 200ms;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     cursor: pointer;
 }
@@ -267,11 +330,18 @@ tag:hover {
     text-align: center;
     height: 30px;
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
+    -webkit-transition: 100ms;
+    -o-transition: 100ms;
     transition: 100ms;
 }
 
 #exit_popup:hover {
+    -webkit-transform: scale(1.25);
+    -ms-transform: scale(1.25);
     transform: scale(1.25);
 }
 
@@ -306,15 +376,30 @@ body.disable-scroll {
     border-top: 16px solid #555;
     width: 120px;
     height: 120px;
+    -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
 }
 
-@keyframes spin {
+@-webkit-keyframes spin {
     0% {
+        -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
 
     100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
 }
@@ -326,6 +411,9 @@ body.disable-scroll {
     }
 
     #main {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
         padding-bottom: 100px;
     }
