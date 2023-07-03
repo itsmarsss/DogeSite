@@ -124,42 +124,49 @@ function enableScroll() {
 
 var tempImage;
 
-function display(index) {
-    popup.style.display = "flex";
+function showImageProcess(index) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = images[index];
 
-    const img = new Image();
-    img.src = images[index];
-    img.onload = () => {
-        const image = new DogeImage(img.src, img.width, img.height, "Doge Pic (Will update)", "All titles and descriptions are like this for now, I have not yet found the time to entertain the viewer by generating fun contexts texts.", ["Tags", "Will", "Be", "Here", ":D"], 1688338082164);
+        img.onload = () => {
+            const image = new DogeImage(img.src, img.width, img.height, "Doge Pic (Will update)", "All titles and descriptions are like this for now, I have not yet found the time to entertain the viewer by generating fun contexts texts.", ["Tags", "Will", "Be", "Here", ":D"], 1688338082164);
 
-        tempImage = image;
+            tempImage = image;
 
-        big_image.src = image.src;
+            big_image.src = image.src;
 
-        big_image.style.height = image.height * (big_image.offsetWidth / image.width) + "px";
-        console.log(big_image.style.height)
+            title.innerHTML = image.title;
+            description.innerHTML = image.description;
 
-        title.innerHTML = image.title;
-        description.innerHTML = image.description;
-
-        tags.innerHTML = "";
-        for (var i = 0; i < image.tags.length; i++) {
-            tags.innerHTML += `
+            tags.innerHTML = "";
+            for (var i = 0; i < image.tags.length; i++) {
+                tags.innerHTML += `
                 <tag>${image.tags[i]}</tag>
             `;
+            }
+
+            if (tags.innerHTML == "") {
+                tags.innerHTML = "No Tags~!"
+            }
+
+            date.innerHTML = new Date(image.date).toLocaleDateString("en-US");
+
+            const url = new URL(document.location);
+
+            url.searchParams.set("dogepic", index);
+            window.history.pushState("", url, url);
         }
+        img.onerror = reject;
+    })
+}
 
-        if (tags.innerHTML == "") {
-            tags.innerHTML = "No Tags~!"
-        }
+async function display(index) {
+    popup.style.display = "flex";
 
-        date.innerHTML = new Date(image.date).toLocaleDateString("en-US");
+    await showImageProcess(index).then(console.log("Done with " + index));
 
-        const url = new URL(document.location);
-
-        url.searchParams.set("dogepic", index);
-        window.history.pushState("", url, url);
-    };
+    big_image.style.height = image.height * (big_image.offsetWidth / image.width) + "px";
 }
 
 function copy() {
