@@ -274,8 +274,6 @@ button:focus,
 
 #info {
     width: 50%;
-    position: sticky;
-    top: 0px;
 }
 
 #muted_info {
