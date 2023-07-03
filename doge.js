@@ -16,7 +16,6 @@ for (var i = 0; i < 81; i++) {
     images.push(`${directoryPath}/marked/doge_pic_${i}.png`);
 }
 
-
 const content = document.getElementById("content");
 
 document.getElementById("search_input").addEventListener("keypress", function (e) {
@@ -72,7 +71,7 @@ function display(index) {
     const img = new Image();
     img.src = images[index];
     img.onload = () => {
-        const image = new DogeImage(img.src, img.width, img.height, "Doge Pic (Will update)", "All titel and descriptions are like this for now, I have not yet found the time to entertain the viewer by generating fun contexts texts.", ["Tags", "Will", "Be", "Here", ":D"], 1688338082164);
+        const image = new DogeImage(img.src, img.width, img.height, "Doge Pic (Will update)", "All titles and descriptions are like this for now, I have not yet found the time to entertain the viewer by generating fun contexts texts.", ["Tags", "Will", "Be", "Here", ":D"], 1688338082164);
 
         tempImage = image;
 
