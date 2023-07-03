@@ -24,6 +24,7 @@ document.getElementById("search_input").addEventListener("keypress", function (e
     }
 });
 
+const modal = document.getElementById("modal");
 const popup = document.getElementById("popup");
 
 const big_image = document.getElementById("big_image");
@@ -62,6 +63,8 @@ function addImageProcess(src, index) {
 async function loadMore() {
     const adjustedLoadAmount = Math.min(loadAmount, images.length - Object.keys(adjustedImages).length);
 
+    modal.style.display = "flex";
+
     document.getElementById("load_more").disabled = true;
 
     for (var i = latestIndex; i < latestIndex + adjustedLoadAmount; i++) {
@@ -72,9 +75,11 @@ async function loadMore() {
 
     prevWidth = 0;
     displayUpdate();
+
     if (images.length != Object.keys(adjustedImages).length) {
         document.getElementById("load_more").disabled = false;
     }
+    modal.style.display = "none";
 }
 
 var tempImage;
@@ -142,7 +147,7 @@ if (params.size > 0) {
     popup.style.display = "none";
 }
 
-var prevWidth = 0;
+var prevWidth = window.innerWidth - 60;
 
 function displayUpdate() {
     const width = window.innerWidth - 60;
@@ -191,6 +196,7 @@ function displayUpdate() {
                 <img class="image" draggable="false" src="${image.src}" style="height: ${adjustedHeight}px;">
             </div>
         `;
+
     }
 }
 
