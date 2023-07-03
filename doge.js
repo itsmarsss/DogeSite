@@ -47,8 +47,6 @@ async function loadMore() {
     const adjustedLoadAmount = Math.min(loadAmount, images.length - adjustedImages.length);
 
     for (var i = latestIndex; i < latestIndex + adjustedLoadAmount; i++) {
-        latestIndex = latestIndex + loadAmount - 1;
-
         const img = new Image();
         img.src = images[i];
         img.onload = () => {
@@ -58,10 +56,13 @@ async function loadMore() {
                 document.getElementById("load_more").disabled = true;
             }
 
-            prevWidth = 0;
+            if (i == latestIndex + adjustedLoadAmount - 1) {
+                prevWidth = 0;
+            }
         };
     }
 
+    latestIndex = latestIndex + loadAmount - 1;
 }
 
 var tempImage;
