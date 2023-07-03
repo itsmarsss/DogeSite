@@ -10,7 +10,7 @@ function DogeImage(src, width, height, title, description, tags, date) {
 
 var images = [];
 
-const directoryPath = "https://itsmarsss.github.io/DogePics/";
+const directoryPath = "https://itsmarsss.github.io/DogePics";
 
 for (var i = 0; i < 81; i++) {
     images.push(`${directoryPath}/marked/doge_pic_${i}.png`);
@@ -142,7 +142,7 @@ setInterval(function () {
     content.innerHTML = "";
     for (var i = 0; i < columns; i++) {
         content.innerHTML += `
-            <div class= "img_column" id = "column-${i}">
+            <div class="img_column" id="column-${i}">
             </div>
         `;
     }
@@ -155,7 +155,7 @@ setInterval(function () {
         const adjustedHeight = image.height * (photoWidth / image.width);
 
         container.innerHTML += `
-            <div class="card" style = "height: ${adjustedHeight}px;" onclick = "display(${i})">
+            <div class="card" style = "height: ${adjustedHeight}px;" onclick="display(${i})">
                 <img class="image" draggable="false" src="${image.src}" style="height: ${adjustedHeight}px;">
             </div>
         `;
