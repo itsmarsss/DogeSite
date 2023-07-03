@@ -57,12 +57,11 @@ async function loadMore() {
             adjustedImages.push(new DogeImage(img.src, img.width, img.height, "Doge Pic (Will update)", "All titles and descriptions are like this for now, I have not yet found the time to entertain the viewer by generating fun contexts texts.", ["Tags", "Will", "Be", "Here", ":D"], 1688338082164));
 
             //if (i == latestIndex + adjustedLoadAmount - 1) {
-                //console.log("Reloading...");
-                //setTimeout(function () {
+            //console.log("Reloading...");
+            //setTimeout(function () {
             prevWidth = 0;
             displayUpdate();
-                //}, 500);
-            }
+            //}, 500);
         };
     }
 
