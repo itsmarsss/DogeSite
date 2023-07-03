@@ -12,7 +12,7 @@ for filename in os.listdir(images):
         original_path = os.path.join(images, filename)
         new_path = os.path.join(directory, "marked/" + filename)
 
-        print('Running: "magick composite -gravity SouthWest "' + watermark + '" "' + original_path + '" "' + new_path + '""')
-        subprocess.run(['magick', 'composite', '-gravity', 'SouthWest', watermark, original_path, new_path], shell=True)
+        print('Running: "magick composite -gravity Center "' + watermark + '" "' + original_path + '" "' + new_path + '""')
+        subprocess.run(['magick', 'composite', '-gravity', 'Center', watermark, original_path, new_path], shell=True)
 
         index += 1
