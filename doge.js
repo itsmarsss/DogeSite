@@ -13,7 +13,7 @@ var images = [];
 const directoryPath = "https://itsmarsss.github.io/DogePics/";
 
 for (var i = 0; i < 81; i++) {
-    images.push(`${directoryPath}/marked/doge_pics_${i}.png`);
+    images.push(`${directoryPath}/marked/doge_pic_${i}.png`);
 }
 
 
