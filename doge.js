@@ -65,7 +65,7 @@ async function loadMore() {
         };
     }
 
-    latestIndex = latestIndex + loadAmount - 1;
+    latestIndex = latestIndex + loadAmount;
 }
 
 var tempImage;
