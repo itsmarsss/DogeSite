@@ -38,34 +38,41 @@ function filter() {
 }
 
 const photoWidth = getComputedStyle(document.documentElement).getPropertyValue("--imgWidth").replace("px", "");
-const loadAmount = 10;
+const loadAmount = 12;
 var latestIndex = 0;
 
-var adjustedImages = [];
+var adjustedImages = {};
+
+function addImageProcess(src, index) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = src;
+
+        img.onload = () => {
+            console.log(adjustedImages);
+            adjustedImages[index] = new DogeImage(img.src, img.width, img.height, "Doge Pic (Will update)", "All titles and descriptions are like this for now, I have not yet found the time to entertain the viewer by generating fun contexts texts.", ["Tags", "Will", "Be", "Here", ":D"], 1688338082164);
+
+            latestIndex++;
+
+            prevWidth = 0;
+            displayUpdate();
+
+            resolve();
+        }
+        img.onerror = reject;
+    })
+}
 
 async function loadMore() {
-    const adjustedLoadAmount = Math.min(loadAmount, images.length - adjustedImages.length);
+    const adjustedLoadAmount = Math.min(loadAmount, images.length - Object.keys(adjustedImages).length);
 
-    if (images.length == adjustedImages.length) {
+    if (images.length == Object.keys(adjustedImages).length) {
         document.getElementById("load_more").disabled = true;
     }
 
     for (var i = latestIndex; i < latestIndex + adjustedLoadAmount; i++) {
-        const img = new Image();
-        img.src = images[i];
-        img.onload = () => {
-            adjustedImages.push(new DogeImage(img.src, img.width, img.height, "Doge Pic (Will update)", "All titles and descriptions are like this for now, I have not yet found the time to entertain the viewer by generating fun contexts texts.", ["Tags", "Will", "Be", "Here", ":D"], 1688338082164));
-
-            //if (i == latestIndex + adjustedLoadAmount - 1) {
-            //console.log("Reloading...");
-            //setTimeout(function () {
-            prevWidth = 0;
-            displayUpdate();
-            //}, 500);
-        };
+        addImageProcess(images[i], i);
     }
-
-    latestIndex = latestIndex + loadAmount + 1;
 }
 
 var tempImage;
@@ -158,7 +165,7 @@ async function displayUpdate() {
         `;
     }
 
-    for (var i = 0; i < adjustedImages.length; i++) {
+    for (var i = 0; i < Object.keys(adjustedImages).length; i++) {
         const container = document.getElementById(`column-${i % columns}`);
 
         var image = adjustedImages[i];
