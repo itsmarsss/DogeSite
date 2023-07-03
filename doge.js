@@ -10,26 +10,11 @@ function DogeImage(src, width, height, title, description, tags, date) {
 
 var images = [];
 
-const directoryPath = '/assets/Doge/';
+const directoryPath = "https://itsmarsss.github.io/DogePics/";
 
-fetch(directoryPath)
-    .then(response => response.text())
-    .then(html => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const fileList = Array.from(doc.querySelectorAll('a'))
-            .map(link => link.href)
-            .filter(href => href.match(/\/assets\/Doge\/[^/]+$/));
-
-        images = fileList;
-
-        console.log(fileList);
-
-        loadMore();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+for (var i = 0; i < 81; i++) {
+    images.push(`${directoryPath}/Doge/doge_pics_${i}.png`);
+}
 
 
 const content = document.getElementById("content");
@@ -101,7 +86,7 @@ function display(index) {
         tags.innerHTML = "";
         for (var i = 0; i < image.tags.length; i++) {
             tags.innerHTML += `
-        <tag>${image.tags[i]}</tag>
+        < tag > ${image.tags[i]}</tag >
         `;
         }
 
@@ -157,23 +142,23 @@ setInterval(function () {
     content.innerHTML = "";
     for (var i = 0; i < columns; i++) {
         content.innerHTML += `
-        <div class="img_column" id="column-${i}">
+    < div class= "img_column" id = "column-${i}" >
 
-        </div>
-    `;
+        </div >
+        `;
     }
 
     for (var i = 0; i < adjustedImages.length; i++) {
-        const container = document.getElementById(`column-${i % columns}`);
+        const container = document.getElementById(`column - ${i % columns} `);
 
         var image = adjustedImages[i];
 
         const adjustedHeight = image.height * (photoWidth / image.width);
 
         container.innerHTML += `
-        <div class="card" style="height: ${adjustedHeight}px;" onclick="display(${i})">
-            <img class="image" draggable="false" src="${image.src}" style="height: ${adjustedHeight}px;">
+    < div class="card" style = "height: ${adjustedHeight}px;" onclick = "display(${i})" >
+        <img class="image" draggable="false" src="${image.src}" style="height: ${adjustedHeight}px;">
         </div>
-    `;
+`;
     }
 }, 100);
