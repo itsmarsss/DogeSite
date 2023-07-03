@@ -156,6 +156,8 @@ function showImageProcess(index) {
 
             url.searchParams.set("dogepic", index);
             window.history.pushState("", url, url);
+
+            resolve();
         }
         img.onerror = reject;
     })
@@ -164,9 +166,13 @@ function showImageProcess(index) {
 async function display(index) {
     popup.style.display = "flex";
 
-    await showImageProcess(index).then(console.log("Done with " + index));
+    await showImageProcess(index).then(() => {
+        console.log("Done with " + index);
 
-    big_image.style.height = image.height * (big_image.offsetWidth / image.width) + "px";
+        big_image.style.height = tempImage.height * (big_image.offsetWidth / tempImage.width) + "px";
+        console.log(big_image.style.height);
+    });
+
 }
 
 function copy() {
