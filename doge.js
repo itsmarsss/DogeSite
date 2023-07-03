@@ -147,7 +147,7 @@ setInterval(function () {
 
     try {
         big_image.style.height = tempImage.height * (big_image.offsetWidth / tempImage.width) + "px";
-    } catch (e) { console.error(e) }
+    } catch (e) { }
 
     const area = width - 60;
     const columns = Math.max(Math.floor(area / photoWidth), 1);
