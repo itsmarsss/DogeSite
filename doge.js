@@ -38,12 +38,12 @@ function filter() {
 }
 
 const photoWidth = getComputedStyle(document.documentElement).getPropertyValue("--imgWidth").replace("px", "");
-const loadAmount = 20;
+const loadAmount = 10;
 var latestIndex = 0;
 
 var adjustedImages = [];
 
-function loadMore() {
+async function loadMore() {
     const adjustedLoadAmount = Math.min(loadAmount, images.length - adjustedImages.length);
 
     for (var i = latestIndex; i < latestIndex + adjustedLoadAmount; i++) {
