@@ -64,7 +64,7 @@ async function loadMore() {
     const adjustedLoadAmount = Math.min(loadAmount, images.length - Object.keys(adjustedImages).length);
 
     modal.style.display = "flex";
-    disableScroll();
+    disableBodyScroll();
 
     document.getElementById("load_more").disabled = true;
 
@@ -82,44 +82,15 @@ async function loadMore() {
     }
 
     modal.style.display = "none";
-    enableScroll();
+    enableBodyScroll();
 }
 
-var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
-
-function preventDefault(e) {
-    e.preventDefault();
+function disableBodyScroll() {
+    document.body.classList.add("disable-scroll");
 }
 
-function preventDefaultForScrollKeys(e) {
-    if (keys[e.keyCode]) {
-        preventDefault(e);
-        return false;
-    }
-}
-
-var supportsPassive = false;
-try {
-    window.addEventListener("test", null, Object.defineProperty({}, "passive", {
-        get: function () { supportsPassive = true; }
-    }));
-} catch (e) { }
-
-var wheelOpt = supportsPassive ? { passive: false } : false;
-var wheelEvent = "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
-
-function disableScroll() {
-    window.addEventListener("DOMMouseScroll", preventDefault, false);
-    window.addEventListener(wheelEvent, preventDefault, wheelOpt);
-    window.addEventListener("touchmove", preventDefault, wheelOpt);
-    window.addEventListener("keydown", preventDefaultForScrollKeys, false);
-}
-
-function enableScroll() {
-    window.removeEventListener("DOMMouseScroll", preventDefault, false);
-    window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
-    window.removeEventListener("touchmove", preventDefault, wheelOpt);
-    window.removeEventListener("keydown", preventDefaultForScrollKeys, false);
+function enableBodyScroll() {
+    document.body.classList.remove("disable-scroll");
 }
 
 var tempImage;
@@ -164,6 +135,7 @@ function showImageProcess(index) {
 }
 
 async function display(index) {
+    disableBodyScroll();
     popup.style.display = "flex";
 
     await showImageProcess(index).then(() => {
@@ -172,7 +144,6 @@ async function display(index) {
         big_image.style.height = tempImage.height * (big_image.offsetWidth / tempImage.width) + "px";
         console.log(big_image.style.height);
     });
-
 }
 
 function copy() {
@@ -191,6 +162,7 @@ document.getElementById("exit_popup").addEventListener("click", function () {
 
     window.history.pushState("", url, url)
     popup.style.display = "none";
+    enableBodyScroll();
 });
 
 const params = new URLSearchParams(document.location.search);

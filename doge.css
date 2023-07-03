@@ -279,6 +279,10 @@ body::-webkit-scrollbar {
     width: 0px;
 }
 
+body.disable-scroll {
+    overflow: hidden;
+}
+
 #main::-webkit-scrollbar {
     width: 5px;
 }
