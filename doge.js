@@ -59,7 +59,8 @@ async function loadMore() {
             //if (i == latestIndex + adjustedLoadAmount - 1) {
                 //console.log("Reloading...");
                 //setTimeout(function () {
-                    prevWidth = 0;
+            prevWidth = 0;
+            displayUpdate();
                 //}, 500);
             }
         };
