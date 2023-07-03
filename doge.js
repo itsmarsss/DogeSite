@@ -113,8 +113,8 @@ function showImageProcess(index) {
             tags.innerHTML = "";
             for (var i = 0; i < image.tags.length; i++) {
                 tags.innerHTML += `
-                <tag>${image.tags[i]}</tag>
-            `;
+                    <tag>${image.tags[i]}</tag>
+                `;
             }
 
             if (tags.innerHTML == "") {
