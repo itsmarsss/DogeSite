@@ -70,7 +70,7 @@ async function loadMore() {
         await addImageProcess(images[i], i).then(console.log("Done with " + i));
     }
 
-    latestIndex += adjustedLoadAmount + 1;
+    latestIndex += adjustedLoadAmount;
 
     prevWidth = 0;
     displayUpdate();
