@@ -51,7 +51,7 @@ function loadMore() {
         const img = new Image();
         img.src = images[i];
         img.onload = () => {
-            adjustedImages.push(new DogeImage(img.src, img.width, img.height, "Title", "Description", ["Tags", "Tags", "Tags"], 1688338082164));
+            adjustedImages.push(new DogeImage(img.src, img.width, img.height, "Doge Pic (Will update)", "All titles and descriptions are like this for now, I have not yet found the time to entertain the viewer by generating fun contexts texts.", ["Tags", "Will", "Be", "Here", ":D"], 1688338082164));
 
             if (images.length == adjustedImages.length) {
                 document.getElementById("load_more").disabled = true;
@@ -72,7 +72,7 @@ function display(index) {
     const img = new Image();
     img.src = images[index];
     img.onload = () => {
-        const image = new DogeImage(img.src, img.width, img.height, "Title", "Description", ["Tags", "Tags", "Tags"], 1688338082164);
+        const image = new DogeImage(img.src, img.width, img.height, "Doge Pic (Will update)", "All titel and descriptions are like this for now, I have not yet found the time to entertain the viewer by generating fun contexts texts.", ["Tags", "Will", "Be", "Here", ":D"], 1688338082164);
 
         tempImage = image;
 
