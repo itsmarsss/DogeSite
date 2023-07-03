@@ -188,6 +188,7 @@ button:focus,
     justify-content: center;
     align-items: center;
     display: none;
+    backdrop-filter: blur(5px);
 }
 
 #popup_content {
@@ -205,6 +206,7 @@ button:focus,
     display: flex;
     overflow: auto;
     gap: 20px;
+    padding-right: 5px;
 }
 
 #popup_image {

@@ -211,7 +211,7 @@ function displayUpdate() {
     }
     prevWidth = width;
 
-    console.log("Realading")
+    console.log("Reloading")
 
     try {
         big_image.style.height = tempImage.height * (big_image.offsetWidth / tempImage.width) + "px";
