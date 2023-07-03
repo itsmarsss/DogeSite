@@ -8,25 +8,29 @@ function DogeImage(src, width, height, title, description, tags, date) {
     this.date = date;
 }
 
-const images = [
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-    "https://cdn.discordapp.com/attachments/1046179689372327977/1046179831903174696/doge.png",
-];
+var images = [];
+
+const directoryPath = '/assets/Doge/';
+
+fetch(directoryPath)
+    .then(response => response.text())
+    .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const fileList = Array.from(doc.querySelectorAll('a'))
+            .map(link => link.href)
+            .filter(href => href.match(/\/assets\/Doge\/[^/]+$/));
+
+        images = fileList;
+
+        console.log(fileList);
+
+        loadMore();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
 
 const content = document.getElementById("content");
 
@@ -50,7 +54,7 @@ function filter() {
 }
 
 const photoWidth = getComputedStyle(document.documentElement).getPropertyValue("--imgWidth").replace("px", "");
-const loadAmount = 12;
+const loadAmount = 20;
 var latestIndex = 0;
 
 var adjustedImages = [];
@@ -125,8 +129,6 @@ document.getElementById("exit_popup").addEventListener("click", function () {
     window.history.pushState("", url, url)
     popup.style.display = "none";
 });
-
-loadMore();
 
 const params = new URLSearchParams(document.location.search);
 
