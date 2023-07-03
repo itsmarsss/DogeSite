@@ -64,6 +64,7 @@ async function loadMore() {
     const adjustedLoadAmount = Math.min(loadAmount, images.length - Object.keys(adjustedImages).length);
 
     modal.style.display = "flex";
+    disableScroll();
 
     document.getElementById("load_more").disabled = true;
 
@@ -79,13 +80,53 @@ async function loadMore() {
     if (images.length != Object.keys(adjustedImages).length) {
         document.getElementById("load_more").disabled = false;
     }
+
     modal.style.display = "none";
+    enableScroll();
+}
+
+var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+
+function preventDefault(e) {
+    e.preventDefault();
+}
+
+function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+    }
+}
+
+var supportsPassive = false;
+try {
+    window.addEventListener("test", null, Object.defineProperty({}, "passive", {
+        get: function () { supportsPassive = true; }
+    }));
+} catch (e) { }
+
+var wheelOpt = supportsPassive ? { passive: false } : false;
+var wheelEvent = "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
+
+function disableScroll() {
+    window.addEventListener("DOMMouseScroll", preventDefault, false);
+    window.addEventListener(wheelEvent, preventDefault, wheelOpt);
+    window.addEventListener("touchmove", preventDefault, wheelOpt);
+    window.addEventListener("keydown", preventDefaultForScrollKeys, false);
+}
+
+function enableScroll() {
+    window.removeEventListener("DOMMouseScroll", preventDefault, false);
+    window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+    window.removeEventListener("touchmove", preventDefault, wheelOpt);
+    window.removeEventListener("keydown", preventDefaultForScrollKeys, false);
 }
 
 var tempImage;
 
 function display(index) {
     popup.style.display = "flex";
+    disableScroll();
 
     const img = new Image();
     img.src = images[index];
@@ -137,6 +178,7 @@ document.getElementById("exit_popup").addEventListener("click", function () {
 
     window.history.pushState("", url, url)
     popup.style.display = "none";
+    enableScroll();
 });
 
 const params = new URLSearchParams(document.location.search);
