@@ -203,6 +203,7 @@ button:focus,
 
 #main {
     display: flex;
+    overflow: auto;
     gap: 20px;
 }
 
@@ -269,7 +270,8 @@ tag:hover {
     transform: scale(1.25);
 }
 
-body::-webkit-scrollbar {
+body::-webkit-scrollbar,
+#main::-webkit-scrollbar {
     width: 0px;
 }
 
@@ -300,7 +302,6 @@ body::-webkit-scrollbar {
 
     #main {
         flex-direction: column;
-        overflow: auto;
         padding-bottom: 20px;
     }
 
