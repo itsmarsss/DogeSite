@@ -2,7 +2,7 @@ import os
 import subprocess
 
 directory = os.getcwd()
-images = os.path.join(directory, "../assets/Doge")
+images = os.path.join(directory, "Doge")
 
 index = 0;
 

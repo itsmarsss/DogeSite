@@ -2,8 +2,8 @@ import os
 import subprocess
 
 directory = os.getcwd()
-exiftoolpath = os.path.join(directory, "exiftool\exiftool.exe")
-images = os.path.join(directory, "../assets/Doge")
+exiftoolpath = os.path.join(directory, "exiftool/exiftool.exe")
+images = os.path.join(directory, "Doge")
 
 print("Running Directory: " + directory)
 print("ExifTool Directory: " + exiftoolpath)
