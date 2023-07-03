@@ -49,13 +49,9 @@ function addImageProcess(src, index) {
         img.src = src;
 
         img.onload = () => {
-            console.log(adjustedImages);
             adjustedImages[index] = new DogeImage(img.src, img.width, img.height, "Doge Pic (Will update)", "All titles and descriptions are like this for now, I have not yet found the time to entertain the viewer by generating fun contexts texts.", ["Tags", "Will", "Be", "Here", ":D"], 1688338082164);
 
-            latestIndex++;
-
-            prevWidth = 0;
-            displayUpdate();
+            console.log("Added " + index);
 
             resolve();
         }
@@ -71,8 +67,13 @@ async function loadMore() {
     }
 
     for (var i = latestIndex; i < latestIndex + adjustedLoadAmount; i++) {
-        addImageProcess(images[i], i);
+        await addImageProcess(images[i], i).then(console.log("Done with " + i));
     }
+
+    latestIndex += adjustedLoadAmount + 1;
+
+    prevWidth = 0;
+    displayUpdate();
 }
 
 var tempImage;
@@ -142,13 +143,15 @@ if (params.size > 0) {
 
 var prevWidth = 0;
 
-async function displayUpdate() {
+function displayUpdate() {
     const width = window.innerWidth - 60;
 
     if (width == prevWidth) {
         return;
     }
     prevWidth = width;
+
+    console.log("Realading")
 
     try {
         big_image.style.height = tempImage.height * (big_image.offsetWidth / tempImage.width) + "px";
@@ -165,12 +168,22 @@ async function displayUpdate() {
         `;
     }
 
+    console.log(Object.keys(adjustedImages).length)
+    console.log(adjustedImages)
+
     for (var i = 0; i < Object.keys(adjustedImages).length; i++) {
         const container = document.getElementById(`column-${i % columns}`);
 
         var image = adjustedImages[i];
 
-        const adjustedHeight = image.height * (photoWidth / image.width);
+        var adjustedHeight;
+
+        try {
+            adjustedHeight = image.height * (photoWidth / image.width);
+        } catch (e) {
+            console.log("Image Load Error at " + i);
+            console.log(image);
+        }
 
         container.innerHTML += `
             <div class="card" style = "height: ${adjustedHeight}px;" onclick="display(${i})">
