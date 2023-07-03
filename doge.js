@@ -62,9 +62,7 @@ function addImageProcess(src, index) {
 async function loadMore() {
     const adjustedLoadAmount = Math.min(loadAmount, images.length - Object.keys(adjustedImages).length);
 
-    if (images.length == Object.keys(adjustedImages).length) {
-        document.getElementById("load_more").disabled = true;
-    }
+    document.getElementById("load_more").disabled = true;
 
     for (var i = latestIndex; i < latestIndex + adjustedLoadAmount; i++) {
         await addImageProcess(images[i], i).then(console.log("Done with " + i));
@@ -74,6 +72,9 @@ async function loadMore() {
 
     prevWidth = 0;
     displayUpdate();
+    if (images.length != Object.keys(adjustedImages).length) {
+        document.getElementById("load_more").disabled = false;
+    }
 }
 
 var tempImage;
