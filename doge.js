@@ -126,7 +126,6 @@ var tempImage;
 
 function display(index) {
     popup.style.display = "flex";
-    disableScroll();
 
     const img = new Image();
     img.src = images[index];
@@ -178,7 +177,6 @@ document.getElementById("exit_popup").addEventListener("click", function () {
 
     window.history.pushState("", url, url)
     popup.style.display = "none";
-    enableScroll();
 });
 
 const params = new URLSearchParams(document.location.search);
