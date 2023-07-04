@@ -165,13 +165,15 @@ document.getElementById("exit_popup").addEventListener("click", function () {
     enableBodyScroll();
 });
 
-const params = new URLSearchParams(document.location.search);
+setTimeout(() => {
+    const params = new URLSearchParams(document.location.search);
 
-if (params.size > 0) {
-    display(params.get("dogepic"));
-} else {
-    popup.style.display = "none";
-}
+    if (params.size > 0) {
+        display(params.get("dogepic"));
+    } else {
+        popup.style.display = "none";
+    }
+}, 1000);
 
 var prevWidth = window.innerWidth - 60;
 
